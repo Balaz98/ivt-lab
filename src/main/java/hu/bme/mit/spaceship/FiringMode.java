@@ -7,4 +7,4 @@ package hu.bme.mit.spaceship;
 public enum FiringMode {
   SINGLE, ALL
 }
-//LEGJOBB SOR A SZERKESZTÉSRE
+//LEGJOBB SOR A SZERKESZTÉSRE EZ BIZTOSAN JÓ LESZ

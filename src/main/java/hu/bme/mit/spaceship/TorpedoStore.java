@@ -14,22 +14,22 @@ public class TorpedoStore {
 
   private int torpedoCount = 0;
 
-  public TorpedoStore(final int numberOfTorpedos){
+  public TorpedoStore(int numberOfTorpedos){
     this.torpedoCount = numberOfTorpedos;
 
     // update failure rate if it was specified in an environment variable
-    final String failureEnv = System.getenv("IVT_RATE");
+    String failureEnv = System.getenv("IVT_RATE");
     if (failureEnv != null){
       try {
         FAILURE_RATE = Double.parseDouble(failureEnv);
-      } catch (final NumberFormatException nfe) {
+      } catch (NumberFormatException nfe) {
         FAILURE_RATE = 0.0;
       }
     }
   }
   Random generator = new Random();
 
-  public boolean fire(final int numberOfTorpedos){
+  public boolean fire(int numberOfTorpedos){
     if(numberOfTorpedos < 1 || numberOfTorpedos > this.torpedoCount){
       throw new IllegalArgumentException("numberOfTorpedos");
     }
@@ -37,7 +37,7 @@ public class TorpedoStore {
     boolean success = false;
 
     // simulate random overheating of the launcher bay which prevents firing
-    final double r = generator.nextDouble();
+    double r = generator.nextDouble();
 
     if (r >= FAILURE_RATE) {
       // successful firing

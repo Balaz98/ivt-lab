@@ -5,6 +5,6 @@ package hu.bme.mit.spaceship;
 *
 */
 public enum FiringMode {
-  SINGLE, ALL
+  SINGLE, ALL, SWDEF
 }
 //LEGJOBB SOR A SZERKESZTÉSRE EZ BIZTOSAN JÓ LESZ

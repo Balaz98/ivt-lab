@@ -1,6 +1,7 @@
 package hu.bme.mit.spaceship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -184,6 +185,40 @@ public class GT4500Test {
     verify(mockAStore, times(2)).fire(1);
     verify(mockBStore, times(0)).fire(1);
 
+  }
+  @Test
+  public void test_3feladat_9() {
+    when(mockAStore.fire(1)).thenReturn(true);
+    when(mockBStore.fire(1)).thenReturn(false);
+    
+    when(mockAStore.isEmpty()).thenReturn(false);
+    when(mockBStore.isEmpty()).thenReturn(true);
+
+    // Act
+    ship.fireTorpedo(FiringMode.SINGLE);
+
+    when(mockAStore.isEmpty()).thenReturn(true);
+
+    ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    verify(mockAStore, times(1)).fire(1);
+    verify(mockBStore, times(0)).fire(1);
+
+  }
+
+  @Test
+  public void test_3feladat_10() {
+    boolean result = ship.fireTorpedo(FiringMode.SWDEF);
+    assertEquals(false, result);
+  }
+
+  @Test
+  public void test_3feladat_11() {
+
+    boolean result = ship.fireLaser(FiringMode.SINGLE);
+    
+    assertEquals(false, result);
   }
 
 }
